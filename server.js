@@ -72,10 +72,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                   })
                   .catch(error => console.error(error))
               })
-
+              connectDB().then(() => {
         app.listen(process.env.PORT || PORT, function () {
             console.log('listening on 8000')
         })
+      }
   })
   .catch(error => console.error(error))
 
