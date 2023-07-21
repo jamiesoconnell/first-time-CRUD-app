@@ -1,7 +1,7 @@
 //console.log("this is jamie")
 
-const express = require('express')
 require('dotenv').config();
+const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
