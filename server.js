@@ -1,10 +1,12 @@
 console.log("this is jamie")
 
 const express = require('express')
+require('dotenv').config();
 const bodyParser = require('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
-const connectionString = 'mongodb+srv://jamieoconnell6:Atticus11@robinwilliams.fbrkxjk.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = process.env.credentials
+console.log(process.env);
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
