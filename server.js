@@ -1,10 +1,10 @@
 //console.log("this is jamie")
 
 require('dotenv').config();
+const MongoClient = require('mongodb').MongoClient
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const MongoClient = require('mongodb').MongoClient
 const connectionString = process.env.credentials
 const PORT = 8000
 console.log(process.env);
