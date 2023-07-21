@@ -1,4 +1,4 @@
-console.log("this is jamie")
+//console.log("this is jamie")
 
 const express = require('express')
 require('dotenv').config();
