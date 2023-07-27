@@ -83,10 +83,3 @@ async function connectToDatabase() {
 // Connect to the database and start the server
 connectToDatabase();
 
-// After calling app.listen, set the server timeout
-const server = app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
-
-// Set the server timeout to 10 seconds (adjust as needed)
-server.timeout = 10000;
