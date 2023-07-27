@@ -80,4 +80,6 @@ async function connectToDatabase() {
   }
 }
 
+// Connect to the database and start the server
 connectToDatabase();
+
