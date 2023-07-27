@@ -7,17 +7,29 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const connectionString = process.env.MONGODB_CONNECTION_STRING;
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(bodyParser.json());
-
 async function connectToDatabase() {
   try {
     const client = await MongoClient.connect(connectionString, { useUnifiedTopology: true });
     console.log('Connected to Database');
     const db = client.db('Robin-Williams-Quotes');
     const quotesCollection = db.collection('quotes');
+
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`);
+    });
+
+    } catch (error){
+      console.log(error)
+    }
+}
+
+connectToDatabase();
+
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(bodyParser.json());
+
 
     app.get('/', async (req, res) => {
       try {
@@ -70,16 +82,3 @@ async function connectToDatabase() {
         console.error(error);
       }
     });
-
-    app.listen(PORT, () => {
-      console.log(`Listening on port ${PORT}`);
-    });
-
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-// Connect to the database and start the server
-connectToDatabase();
-
