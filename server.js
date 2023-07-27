@@ -18,6 +18,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     const db = client.db('Robin-Williams-Quotes');
     const quotesCollection = db.collection('quotes');
 
+    app.listen(PORT, () => {
+      console.log(`Listening on port ${PORT}`);
+    });
+
     app.get('/', (req, res) => {
       quotesCollection.find().toArray()
         .then(results => {
@@ -25,6 +29,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
           res.render('index.ejs', { quotes: results });
         })
         .catch(error => console.error(error));
+        
     });
 
     app.post('/quotes', (req, res) => {
@@ -66,10 +71,11 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         })
         .catch(error => console.error(error));
     });
-
-    app.listen(PORT, () => {
-      console.log(`Listening on port ${PORT}`);
-    });
+    
+ 
+    // app.listen(PORT, () => {
+    //   console.log(`Listening on port ${PORT}`);
+    // });
 
   })
   .catch(error => console.error(error));
